@@ -1,23 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./components/Header";
+import Home from "./components/Home";
+import NewTransaction from "./components/NewTransaction";
+import { useSelector } from "react-redux";
+import { selectTransactions } from "./features/transactions/transactionsSlice";
+import { useTransactions } from "./useTransactions";
 
-function App() {
+
+const App = () => {
+
+  const { transactions} = useSelector(selectTransactions);
+
+
+const {
+    // transactions,
+    setTransactions,
+    removeTransaction,
+    removeAllTransactions,
+    addNewTransaction,
+    incomeTransactions,
+    expenseTransactions,
+    calculateTotal,
+    incomeTotal,
+    expenseTotal,
+    finalAmount,
+} = useTransactions();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <Home
+        transactions={transactions}
+        removeTransaction={removeTransaction}
+        incomeTransactions={incomeTransactions}
+        expenseTransactions={expenseTransactions}
+        finalAmount={finalAmount}
+        incomeTotal={incomeTotal}
+        expenseTotal={expenseTotal}
+        removeAllTransactions={removeAllTransactions}
+       
+      />
+
+      <NewTransaction
+        addNewTransaction={addNewTransaction}
+        setTransactions={setTransactions}
+        transactions={transactions}
+
+      />
+
     </div>
   );
 }
