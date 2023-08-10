@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getTransactionsFromLocalStorage } from "./transactionsLocalStorage";
 
 const initialState = {
-    transactions: [],
+    transactions: getTransactionsFromLocalStorage(),
 };
 
 const transactionsSlice = createSlice({
