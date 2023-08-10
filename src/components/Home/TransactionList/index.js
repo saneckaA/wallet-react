@@ -1,7 +1,40 @@
-import React, { useRef } from 'react'
-import { Container, Title, Income, Expense, Transactions, List, Subtitle, Amount, Select, Card, RemoveButton, Con, Total } from './styled';
+import React from 'react'
+import {
+    Container,
+    Title,
+    Income,
+    Expense,
+    Transactions,
+    List,
+    Subtitle,
+    Amount,
+    Select,
+    Card,
+    RemoveButton,
+    Con,
+    Total
+} from './styled';
+import { useDispatch } from 'react-redux';
+import { removeTransaction, selectIsTransactionExpense, selectIsTransactionIncome } from '../../../features/transactions/transactionsSlice';
+import { useSelector } from 'react-redux';
+import categoryOptions from '../../../categoryOptions';
 
-const TransactionList = ({ removeTransaction, incomeTransactions, expenseTransactions, incomeTotal, expenseTotal }) => {
+
+
+const TransactionList = ({ calculateTotal }) => {
+
+    const dispatch = useDispatch();
+
+    const incomeTransactions = useSelector(selectIsTransactionIncome);
+    const expenseTransactions = useSelector(selectIsTransactionExpense);
+
+    const incomeTotal = calculateTotal(incomeTransactions);
+    const expenseTotal = calculateTotal(expenseTransactions.map(transaction => ({ ...transaction, price: -1 * transaction.price })));
+
+    const getCategoryIcon = (category) => {
+        const selectedCategory = categoryOptions.find(option => option.value === category);
+        return selectedCategory ? selectedCategory.icon : "";
+    };
 
     return (
 
@@ -19,13 +52,14 @@ const TransactionList = ({ removeTransaction, incomeTransactions, expenseTransac
                             <li key={transaction.id}>
                                 <Card>
                                     <Select>
-                                        <span>{transaction.category}</span>
-
-                                        <span>{transaction.content}</span>
+                                        <span>
+                                            {getCategoryIcon(transaction.category)}
+                                        </span> 
+                                        <span> {transaction.content} </span>
                                     </Select>
                                     <Con>
                                         <Amount income>{transaction.price} zł</Amount>
-                                        <RemoveButton onClick={() => removeTransaction(transaction.id)}>x</RemoveButton>
+                                        <RemoveButton onClick={() => dispatch(removeTransaction(transaction.id))}>x</RemoveButton>
                                     </Con>
                                 </Card>
                             </li>
@@ -42,7 +76,7 @@ const TransactionList = ({ removeTransaction, incomeTransactions, expenseTransac
                             <li key={transaction.id}>
                                 <Card>
                                     <Select>
-                                        <span> {transaction.category}</span>
+                                        <span>{getCategoryIcon(transaction.category)}</span>
                                         <span> {transaction.content} </span>
 
                                     </Select>
@@ -50,7 +84,7 @@ const TransactionList = ({ removeTransaction, incomeTransactions, expenseTransac
                                         <Amount>
                                             <span> {transaction.price} zł</span>
                                         </Amount>
-                                        <RemoveButton onClick={() => removeTransaction(transaction.id)}>x</RemoveButton>
+                                        <RemoveButton onClick={() => dispatch(removeTransaction(transaction.id))}>x</RemoveButton>
                                     </Con>
                                 </Card>
                             </li>

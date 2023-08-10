@@ -1,38 +1,41 @@
 import React, { useRef, useState } from 'react'
 import { Container, Title, Form, Input, Header, Select, Buttons, Save, Cancel } from './styled';
-import { FaHamburger, FaShoppingBasket, FaMoneyBillWave } from 'react-icons/fa';
-import { RiMovie2Fill } from 'react-icons/ri'
+import { useDispatch } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
+import { addTransaction } from '../../features/transactions/transactionsSlice';
+import categoryOptions from '../../categoryOptions';
 
-
-const NewTransaction = ({ addNewTransaction, options }) => {
+const NewTransaction = () => {
 
     const [newContentName, setNewContentName] = useState("");
     const [newContentPrice, setNewContentPrice] = useState("");
+    const [selectedCategory, setSelectedCategory] = useState("");
 
-    const priceInputRef = useRef(null);
-    const nameInputRef = useRef(null);
+    const dispatch = useDispatch();
+    const inputRef = useRef(null);
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-        addNewTransaction(
-            newContentName.trim(),
-            newContentPrice,
-        );
+        const contentTrimmed = newContentName.trim();
+        if(contentTrimmed === "") {
+            return;
+        }
+
+        dispatch(addTransaction({
+            content: contentTrimmed,
+            price: newContentPrice,
+            category: selectedCategory,
+            id: nanoid(),
+        }));
+
+        setNewContentName("");
+        setNewContentPrice("");
+        inputRef.current.focus();
     };
 
-    const handleAddTransaction = () => {
-          const content = nameInputRef.current.value;
-          const price = parseFloat(priceInputRef.current.value);
-
-          if (price > 0) {
-            addNewTransaction(content, price);
-          }
-
-          nameInputRef.current.value = '';
-          priceInputRef.current.value = '';
-
+    const handleCategoryChange = (event) => {
+        setSelectedCategory(event.target.value);
     };
-
 
     return (
         <Container>
@@ -43,19 +46,20 @@ const NewTransaction = ({ addNewTransaction, options }) => {
                     <Input
                         placeholder="podaj nazwę transakcji"
                         type="text"
-                        ref={nameInputRef}
+                        required
+                        ref={inputRef}
                         value={newContentName}
-                        onChange={(event) => setNewContentName(event.target.value)}
+                        onChange={({ target }) => setNewContentName(target.value)}
                     />
                 </Header>
                 <Header>
                     Kwota:
                     <Input
                         placeholder="podaj kwotę transakcji"
+                        required
                         type="number"
                         value={newContentPrice}
-                        ref={priceInputRef}
-                        onChange={(event) => setNewContentPrice(event.target.value)}
+                        onChange={({ target }) => setNewContentPrice(target.value)}
 
                     />
                     <span>[Jeśli dodajesz wydatek, postaw znak minusa na początku kwoty]</span>
@@ -63,13 +67,20 @@ const NewTransaction = ({ addNewTransaction, options }) => {
                 <Header>
                     Wybierz kategorię:
                     <Select
-                     
+                     value={selectedCategory}
+                     onChange={handleCategoryChange}
+                     required
                     >
-                     
+                     <option value="">Select Category</option>
+                     {categoryOptions.map(option => (
+                        <option key={option.value} value={option.value}>
+                            {option.icon} {option.label}
+                        </option>
+                     ))}
                     </Select>
                 </Header>
                 <Buttons>
-                    <Save onClick={handleAddTransaction} >
+                    <Save  >
                         Zapisz
                     </Save>
                     <Cancel>
@@ -77,6 +88,7 @@ const NewTransaction = ({ addNewTransaction, options }) => {
                     </Cancel>
                 </Buttons>
             </Form>
+
         </Container>
     )
 }
