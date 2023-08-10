@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import transactionsReducer from "./features/transactions/transactionsSlice";
 import createSagaMiddleware from "redux-saga";
-import { transactionsSaga } from "./features/transactions/transactionsSaga";
+import rootSaga from "./rootSaga";
 
 const sagaMiddleware = createSagaMiddleware();
 export default configureStore({
@@ -11,5 +11,5 @@ export default configureStore({
     middleware: [sagaMiddleware],
 });
 
-sagaMiddleware.run(transactionsSaga);
+sagaMiddleware.run(rootSaga);
 
