@@ -1,10 +1,20 @@
 import React from 'react'
 import { Container, Title, Amount, Buttons, Add, Remove, Styles, ThemeButton, Light, Dark } from './styled';
+import { useDispatch } from 'react-redux';
+import { removeAllTransactions } from '../../../features/transactions/transactionsSlice';
 
-const MainPanel = ({finalAmount, removeAllTransactions}) => {
+const MainPanel = ({finalAmount}) => {
 
+    const dispatch = useDispatch();
+
+    const handleRemoveAll = () => {
+        dispatch(removeAllTransactions());
+    };
+
+    
 
     return (
+        
         <Container>
             <Title>
                 Dostępne środki:
@@ -16,14 +26,14 @@ const MainPanel = ({finalAmount, removeAllTransactions}) => {
                 <Add >
                     + Dodaj transakcję
                 </Add>
-                <Remove onClick={removeAllTransactions}>
+                <Remove onClick={handleRemoveAll}>
                     Usuń wszystko
                 </Remove>
             </Buttons>
             <Styles>
                 Wybierz styl:
                 <ThemeButton>
-                    <Light >
+                    <Light  >
 
                     </Light>
                     <Dark >

@@ -15,7 +15,7 @@ export const Container = styled.div`
 
 export const Title = styled.div`
    margin-top: 30px;
-   font-size: 35px;
+   font-size: 33px;
    text-transform: uppercase;
 
    @media (max-width: 767px) {
@@ -38,6 +38,7 @@ export const Buttons = styled.div`
    display: flex;
    justify-content: center;
    align-items: center;
+   box-shadow: 24px 28px 25px -21px rgba(155, 155, 165, 1);
    
 
    @media (max-width: 767px) {
@@ -56,6 +57,7 @@ export const Add = styled.button`
    text-decoration: none;
    text-align: center;
    padding-top: 5px;
+ 
 
    &:hover {
     color: white;
