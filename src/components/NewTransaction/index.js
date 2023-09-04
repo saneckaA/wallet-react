@@ -1,9 +1,10 @@
 import React, { useRef, useState } from 'react'
-import { Container, Title, Form, Input, Header, Select, Buttons, Save, Cancel } from './styled';
+import { Container, Title, Form, Input, Header, Select, Buttons, Save, Cancel, StyledLink } from './styled';
 import { useDispatch } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 import { addTransaction } from '../../features/transactions/transactionsSlice';
 import categoryOptions from '../../categoryOptions';
+
 
 const NewTransaction = () => {
 
@@ -17,7 +18,7 @@ const NewTransaction = () => {
     const onFormSubmit = (event) => {
         event.preventDefault();
         const contentTrimmed = newContentName.trim();
-        if(contentTrimmed === "") {
+        if (contentTrimmed === "") {
             return;
         }
 
@@ -67,24 +68,24 @@ const NewTransaction = () => {
                 <Header>
                     Wybierz kategorię:
                     <Select
-                     value={selectedCategory}
-                     onChange={handleCategoryChange}
-                     required
+                        value={selectedCategory}
+                        onChange={handleCategoryChange}
+                        required
                     >
-                     <option value="">Select Category</option>
-                     {categoryOptions.map(option => (
-                        <option key={option.value} value={option.value}>
-                            {option.icon} {option.label}
-                        </option>
-                     ))}
+                        <option value="">Kategorie:</option>
+                        {categoryOptions.map(option => (
+                            <option key={option.value} value={option.value}>
+                                {option.icon} {option.label}
+                            </option>
+                        ))}
                     </Select>
                 </Header>
                 <Buttons>
-                    <Save  >
+                    <Save >
                         Zapisz
                     </Save>
                     <Cancel>
-                        Anuluj
+                        <StyledLink to="/">Powrót ⮞ </StyledLink>
                     </Cancel>
                 </Buttons>
             </Form>
