@@ -12,7 +12,8 @@ import {
     Card,
     RemoveButton,
     Con,
-    Total
+    Total,
+    Content,
 } from './styled';
 import { useDispatch } from 'react-redux';
 import { removeTransaction, selectIsTransactionExpense, selectIsTransactionIncome } from '../../../features/transactions/transactionsSlice';
@@ -55,7 +56,7 @@ const TransactionList = ({ calculateTotal }) => {
                                         <span>
                                             {getCategoryIcon(transaction.category)}
                                         </span> 
-                                        <span> {transaction.content} </span>
+                                        <Content> {transaction.content} </Content>
                                     </Select>
                                     <Con>
                                         <Amount income>{transaction.price} zł</Amount>
@@ -77,7 +78,7 @@ const TransactionList = ({ calculateTotal }) => {
                                 <Card>
                                     <Select>
                                         <span>{getCategoryIcon(transaction.category)}</span>
-                                        <span> {transaction.content} </span>
+                                        <Content> {transaction.content} </Content>
 
                                     </Select>
                                     <Con>
