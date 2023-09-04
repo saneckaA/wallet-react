@@ -1,4 +1,23 @@
-# Getting Started with Create React App
+# Wallet - React
+
+## Description
+The wallet application allows you to manage your expenses. The application is divided into two panels. In the first one, transactions divided into income and expenses are shown in the form of a list of transactions. A single transaction consists of a category icon, the name of the transaction, and the amount assigned to it. At the very bottom is a summary of the amounts of all transactions marked with the Total field. In addition, on the right side of each transaction, there is a button marked with an 'x' that allows you to delete a single transaction. The second panel consists of a summary of income and expenses. In addition, under this sum, an add transactions button takes us to a subpage where we can complete the information in the form about the transaction we want to add. In this form, it's required to enter the name of the transaction and its amount, as well as select the category to which the transaction belongs. There are five categories to choose from: Food, Shopping, Transportation, Cinema and Income. When you want to add a transaction to expenses, put a minus sign in front of the amount. To save the transaction, click on the 'Zapisz' button and when you want to return to the main page, click on the 'Powrót' button. In the second panel of the application, there is also a button that allows you to delete all added transactions at once. At the very top of this panel, there is also a clock and a button that allows you to change between light and dark mode. 
+
+## How it works:
+
+## You can check it out here:
+
+## Technologies used in this project:
+- HTML
+- CSS
+- JavaScript (ES6+)
+- React
+- create-react-app
+- custom hooks
+- React-redux
+- React-router
+- Redux-saga
+- styled-components
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -13,11 +32,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
@@ -38,33 +52,3 @@ If you aren't satisfied with the build tool and configuration choices, you can `
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
