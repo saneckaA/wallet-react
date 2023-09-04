@@ -21,20 +21,23 @@ export const Transactions = styled.div`
     @media (max-width: 767px) {
         grid-template-columns: 300px;
     }
- 
 `;
 
 export const Income = styled.div`
-   border: 1px solid rgb(156, 158, 161);
+   border: 1px solid ${({theme}) => theme.borderColor};
    min-height: 80px;
    font-size: 30px;
    padding-top: 30px;
-   color: rgb(60, 163, 102);
+   color: ${({theme}) => theme.incomeTitleColor};
    font-weight: 700;
    display: flex;
    flex-direction: column;
-   background: white;
-   box-shadow: 24px 28px 25px -21px rgba(155, 155, 165, 1);
+   background: ${({theme}) => theme.backgroundTransColor};
+   box-shadow: ${({theme}) => theme.boxshadowColor};
+`;
+
+export const Content = styled.span`
+   color: ${({theme}) => theme.contentColor};
 `;
 
 export const Subtitle = styled.div`
@@ -42,7 +45,7 @@ export const Subtitle = styled.div`
 `;
 
 export const Expense = styled(Income)`
-   color: rgb(230, 91, 41);
+   color: ${({theme}) => theme.expenseTitleColor};
 `;
 
 export const List = styled.div`
@@ -57,29 +60,26 @@ export const List = styled.div`
    li {
       padding-bottom: 10px;
    }
-
 `;
 
 export const Card = styled.div`
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid rgb(156, 158, 161);
+  border-bottom: 1px solid ${({theme}) => theme.borderColor};
   padding-bottom: 5px;
   color: black;
 `;
 
 
 export const Amount = styled.div`
-    color: rgb(230, 91, 41);
+    color: ${({theme}) => theme.expenseTitleColor};
 
-    
     ${({income}) => income && css`
-    color: rgb(60, 163, 102)
+    color: ${({theme}) => theme.incomeTitleColor};
     `}
 `;
 
 export const Select = styled.div`
-
 `;
 
 export const Con = styled.div`
@@ -94,7 +94,7 @@ export const RemoveButton = styled.button`
    align-items: center;
    justify-content: center;
    border: none;
-   background-color: white;
+   background-color: ${({theme}) => theme.removeTransactionColor};
    font-weight: 700;
    font-size: 16px;
 `;

@@ -5,7 +5,8 @@ import MainPanel from './MainPanel';
 import { selectIsTransactionExpense, selectIsTransactionIncome } from '../../features/transactions/transactionsSlice';
 import { useSelector } from 'react-redux';
 
-const Home = ({ transactions, calculateTotal }) => {
+
+const Home = ({ transactions, calculateTotal, toggleTheme, theme }) => {
 
     const incomeTransactions = useSelector(selectIsTransactionIncome);
     const expenseTransactions = useSelector(selectIsTransactionExpense);
@@ -30,6 +31,8 @@ const Home = ({ transactions, calculateTotal }) => {
                 <ItemMain>
                     <MainPanel
                         finalAmount={finalAmount}
+                        toggleTheme={toggleTheme}
+                        theme={theme}
                     />
                 </ItemMain>
             </Container>

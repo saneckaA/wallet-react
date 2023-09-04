@@ -5,17 +5,15 @@ export const Container = styled.div`
    grid-template-columns: 800px 400px;
    margin-top: 30px;
    justify-content: center;
-  
-
 `;
 
 export const Item = styled.div`
-
 `;
 
 export const ItemMain = styled.div`
-   border: 1px solid black;
-   height: 500px;
+   border: 1px solid ${({theme}) => theme.borderColor};
+   height: 400px;
    width: 400px;
-   box-shadow: 24px 28px 25px -21px rgba(155, 155, 165, 1);
+   box-shadow: ${({theme}) => theme.boxshadowColor};
+   background-color: ${({theme}) => theme.mainPanelBcg};
 `;

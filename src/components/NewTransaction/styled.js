@@ -1,7 +1,8 @@
-import styled from "styled-components"
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
-    background-image: linear-gradient(to bottom right, rgb(246, 250, 185), violet);
+    background-image: ${({theme}) => theme.newTransactionBcg};
     height: 81vh;
 `;
 
@@ -12,6 +13,11 @@ export const Title = styled.div`
    text-transform: uppercase;
    display: flex;
    justify-content: center;
+`;
+
+export const StyledLink = styled(Link)`
+   text-decoration: none;
+   color: black;
 `;
 
 export const Form = styled.form`
@@ -43,7 +49,7 @@ export const Input = styled.input`
    margin-right: auto;
    margin-left: auto;
    margin-top: 20px;
-   height: 20px;
+   height: 25px;
    text-align: center;
    font: italic;
 
@@ -56,12 +62,13 @@ export const Input = styled.input`
 
 export const Select = styled.select`
   display: block;
+  color: grey;
   width: 500px;
+  height: 25px;
   margin-right: auto;
   margin-left: auto;
   margin-top: 20px;
   font: inherit;
-  height: 26px;
   text-align: center;
 
   @media (max-width: 767px) {
@@ -86,9 +93,9 @@ export const Save = styled.button`
    padding: 10px;
    width: 90px;
    border-radius: 4px;
-   border: 1px solid rgb(249, 249, 249);
+   border: 1px solid ${({theme}) => theme.newTransBorderColor};
    transition: 1s;
-
+   cursor: pointer;
    &:hover {
     transform: scale(1.2);
    }

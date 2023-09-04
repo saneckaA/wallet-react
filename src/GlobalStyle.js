@@ -12,8 +12,9 @@ html {
 
 body {
   margin: 0;
-  background: rgb(244, 244, 244);
+  background: ${({theme}) => theme.backgroundColor};
   font-family: 'Cormorant', serif;
+  color: ${({theme}) => theme.textColor};
 }
 
 
