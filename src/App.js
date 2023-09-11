@@ -4,7 +4,7 @@ import Home from "./components/Home";
 import NewTransaction from "./components/NewTransaction";
 import { useSelector } from "react-redux";
 import { selectTransactions } from "./features/transactions/transactionsSlice";
-import { BrowserRouter as Router, Routes as Switch, Link, Route } from "react-router-dom";
+import { HashRouter as Router, Routes as Switch, Link, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./theme";
 import { GlobalStyle } from "./GlobalStyle";
