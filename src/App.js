@@ -4,7 +4,7 @@ import Home from "./components/Home";
 import NewTransaction from "./components/NewTransaction";
 import { useSelector } from "react-redux";
 import { selectTransactions } from "./features/transactions/transactionsSlice";
-import { HashRouter as Router, Routes as Switch, Link, Route } from "react-router-dom";
+import { HashRouter, Routes as Switch, Link, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./theme";
 import { GlobalStyle } from "./GlobalStyle";
@@ -25,7 +25,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyle />
-    <Router>
+    <HashRouter>
       <Header />
       <Switch>
         <Route path="/" element={ <Home
@@ -35,7 +35,7 @@ const App = () => {
       />} />
       <Route path="/newTransaction" element={ <NewTransaction />} />
       </Switch>
-    </Router>
+    </HashRouter>
     </ThemeProvider>
   );
 }
