@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import NewTransaction from "./components/NewTransaction";
+
 import { useSelector } from "react-redux";
 import { selectTransactions } from "./features/transactions/transactionsSlice";
 import { HashRouter, Routes as Switch, Link, Route } from "react-router-dom";
@@ -9,6 +10,7 @@ import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./theme";
 import { GlobalStyle } from "./GlobalStyle";
 import { useSwitchTheme } from "./useSwitchTheme";
+import TransactionInfo from "./components/TransactionInfo";
 
 
 const App = () => {
@@ -34,6 +36,7 @@ const App = () => {
         theme={theme}
       />} />
       <Route path="/newTransaction" element={ <NewTransaction />} />
+      <Route path="/transactionInfo/:id" element={ <TransactionInfo />} />
       </Switch>
     </HashRouter>
     </ThemeProvider>
