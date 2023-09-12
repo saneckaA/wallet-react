@@ -5,6 +5,9 @@ import { nanoid } from '@reduxjs/toolkit';
 import { addTransaction } from '../../features/transactions/transactionsSlice';
 import categoryOptions from '../../categoryOptions';
 
+const getTransactionType = (price) => {
+    return price < 0 ? "Wydatek" : "Przychód";
+};
 
 const NewTransaction = () => {
 
@@ -27,6 +30,8 @@ const NewTransaction = () => {
             price: newContentPrice,
             category: selectedCategory,
             id: nanoid(),
+            date: new Date().toLocaleDateString(),
+            type: getTransactionType(newContentPrice)
         }));
 
         setNewContentName("");
@@ -89,7 +94,6 @@ const NewTransaction = () => {
                     </Cancel>
                 </Buttons>
             </Form>
-
         </Container>
     )
 }
