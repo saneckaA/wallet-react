@@ -3,6 +3,7 @@ export const lightTheme = {
         textColor: "black",
         incomeTitleColor: "rgb(60, 163, 102)",
         expenseTitleColor: "rgb(230, 91, 41)",
+        transactionTitleColor: "rgb(230, 91, 41)",
         backgroundTransColor: "white",
         amountColor: "red",
         clockColor: "orange",
@@ -25,6 +26,7 @@ export const darkTheme = {
     textColor: "white",
     incomeTitleColor: "rgb(232, 168, 237)",
     expenseTitleColor: "rgb(232, 168, 237)",
+    transactionTitleColor: "rgb(232, 168, 237)",
     amountColor: "rgb(216, 16, 232)",
     clockColor: "rgb(225, 78, 237)",
     contentColor: "white",
@@ -36,6 +38,5 @@ export const darkTheme = {
     boxshadowColor: "24px 28px 25px -21px rgba(37, 11, 34, 1)",
     newTransactionBcg: "green",
     mainPanelBcg: "rgb(70, 77, 72)",
-
 }
 
