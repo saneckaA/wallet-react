@@ -1,4 +1,5 @@
 import styled, {css} from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
    display: flex;
@@ -36,8 +37,9 @@ export const Income = styled.div`
    box-shadow: ${({theme}) => theme.boxshadowColor};
 `;
 
-export const Content = styled.span`
+export const Content = styled(Link)`
    color: ${({theme}) => theme.contentColor};
+   text-decoration: none;
 `;
 
 export const Subtitle = styled.div`

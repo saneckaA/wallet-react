@@ -1,11 +1,11 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import NewTransaction from "./components/NewTransaction";
 
 import { useSelector } from "react-redux";
-import { selectTransactions } from "./features/transactions/transactionsSlice";
-import { HashRouter, Routes as Switch, Link, Route } from "react-router-dom";
+import { getTransactionById, selectTransactions } from "./features/transactions/transactionsSlice";
+import { HashRouter, Routes as Switch, Link, Route, useParams } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./theme";
 import { GlobalStyle } from "./GlobalStyle";
@@ -23,22 +23,23 @@ const App = () => {
 
   const [theme, toggleTheme] = useSwitchTheme();
 
-
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyle />
-    <HashRouter>
-      <Header />
-      <Switch>
-        <Route path="/" element={ <Home
-        calculateTotal={calculateTotal}
-        toggleTheme={toggleTheme}
-        theme={theme}
-      />} />
-      <Route path="/newTransaction" element={ <NewTransaction />} />
-      <Route path="/transactionInfo/:id" element={ <TransactionInfo />} />
-      </Switch>
-    </HashRouter>
+      <HashRouter>
+        <Header />
+        <Switch>
+          <Route path="transactionInfo/:id" element={<TransactionInfo />} />
+          <Route path="/newTransaction" element={<NewTransaction />} />
+          <Route path="/" element={<Home
+            calculateTotal={calculateTotal}
+            toggleTheme={toggleTheme}
+            theme={theme}
+          />} />
+
+
+        </Switch>
+      </HashRouter>
     </ThemeProvider>
   );
 }

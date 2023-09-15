@@ -20,8 +20,6 @@ import { removeTransaction, selectIsTransactionExpense, selectIsTransactionIncom
 import { useSelector } from 'react-redux';
 import categoryOptions from '../../../categoryOptions';
 
-
-
 const TransactionList = ({ calculateTotal }) => {
 
     const dispatch = useDispatch();
@@ -38,7 +36,6 @@ const TransactionList = ({ calculateTotal }) => {
     };
 
     return (
-
         <Container>
             <Title>
                 Lista transakcji
@@ -55,8 +52,8 @@ const TransactionList = ({ calculateTotal }) => {
                                     <Select>
                                         <span>
                                             {getCategoryIcon(transaction.category)}
-                                        </span> 
-                                        <Content> {transaction.content} </Content>
+                                        </span>
+                                        <Content to={`/transactionInfo/${transaction.id}`} > {transaction.content} </Content>
                                     </Select>
                                     <Con>
                                         <Amount income>{transaction.price} zł</Amount>
@@ -78,12 +75,11 @@ const TransactionList = ({ calculateTotal }) => {
                                 <Card>
                                     <Select>
                                         <span>{getCategoryIcon(transaction.category)}</span>
-                                        <Content> {transaction.content} </Content>
-
+                                        <Content to={`/transactionInfo/${transaction.id}`}> {transaction.content} </Content>
                                     </Select>
                                     <Con>
                                         <Amount>
-                                            <span> {transaction.price} zł</span>
+                                            <span> {transaction.price}  zł</span>
                                         </Amount>
                                         <RemoveButton onClick={() => dispatch(removeTransaction(transaction.id))}>x</RemoveButton>
                                     </Con>
