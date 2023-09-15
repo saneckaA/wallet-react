@@ -14,7 +14,6 @@ const transactionsSlice = createSlice({
                 ...state,
                 transactions: [...state.transactions, transaction],
             };
-
         },
         removeTransaction: (state, action) => {
            state.transactions = state.transactions.filter((transaction) => transaction.id !== action.payload);
@@ -26,14 +25,12 @@ const transactionsSlice = createSlice({
     },
 });
 
-
-
-
-
 export const { addTransaction, removeTransaction, removeAllTransactions } = transactionsSlice.actions;
 export const selectTransactions = state => state.transactions.transactions;
 export const selectIsTransactionIncome = state => selectTransactions(state).filter(transaction => transaction.price > 0);
 export const selectIsTransactionExpense = state => selectTransactions(state).filter(transaction => transaction.price < 0);
+
+export const getTransactionById = (state, transactionId) => selectTransactions(state).find(({id}) => id === transactionId);
 
 export default transactionsSlice.reducer;
 
