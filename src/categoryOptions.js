@@ -1,9 +1,9 @@
 const categoryOptions = [
-    { label: "Food", value: "food", icon: "🍔" },
-    { label: "Shopping", value: "shopping", icon: "🛒" },
+    { label: "Jedzenie", value: "food", icon: "🍔" },
+    { label: "Zakupy", value: "shopping", icon: "🛒" },
     { label: "Transport", value: "transport", icon: "🚗"},
-    { label: "Cinema", value: "cinema", icon: "📽️"},
-    { label: "Income", value: "income", icon: "💵"},
+    { label: "Kino", value: "cinema", icon: "📽️"},
+    { label: "Przychód", value: "income", icon: "💵"},
 ];
 
 export default categoryOptions;
