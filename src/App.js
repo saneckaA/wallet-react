@@ -29,7 +29,7 @@ const App = () => {
       <HashRouter>
         <Header />
         <Switch>
-          <Route path="transactionInfo/:id" element={<TransactionInfo />} />
+          <Route path="/transactionInfo/:id" element={<TransactionInfo />} />
           <Route path="/newTransaction" element={<NewTransaction />} />
           <Route path="/" element={<Home
             calculateTotal={calculateTotal}
