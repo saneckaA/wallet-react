@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 import { getTransactionsFromLocalStorage } from "./transactionsLocalStorage";
 
 const initialState = {
@@ -27,8 +27,14 @@ const transactionsSlice = createSlice({
 
 export const { addTransaction, removeTransaction, removeAllTransactions } = transactionsSlice.actions;
 export const selectTransactions = state => state.transactions.transactions;
-export const selectIsTransactionIncome = state => selectTransactions(state).filter(transaction => transaction.price > 0);
-export const selectIsTransactionExpense = state => selectTransactions(state).filter(transaction => transaction.price < 0);
+export const selectIsTransactionIncome = createSelector(
+    [selectTransactions],
+    transactions => transactions.filter(transaction => transaction.price > 0)
+);
+export const selectIsTransactionExpense = createSelector(
+    [selectTransactions],
+    transactions => transactions.filter(transaction => transaction.price < 0)
+);
 
 export const getTransactionById = (state, transactionId) => selectTransactions(state).find(({id}) => id === transactionId);
 
