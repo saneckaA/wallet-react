@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Container, Title, Amount, Buttons, Add, Remove, Switcher, Hour, Extra, StyledLink } from './styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeAllTransactions } from '../../../features/transactions/transactionsSlice';
 import { useCurrentDate } from './useCurrentDate';
 import { selectIsDark, toggleTheme } from '../../../themeSlice';
-import { THEME_STORAGE_KEY, getThemeFromLocalStorage, saveThemeInLocalStorage } from '../../../themeLocalStorage';
 
 const MainPanel = ({ finalAmount }) => {
-
+    console.log('MainPanel jest renderowany');
     const dispatch = useDispatch();
     const handleRemoveAll = () => {
         dispatch(removeAllTransactions());
@@ -17,22 +16,10 @@ const MainPanel = ({ finalAmount }) => {
 
     const [isChecked, setIsChecked] = useState(isDark);
 
-    useEffect(() => {
-        const storedTheme = getThemeFromLocalStorage(THEME_STORAGE_KEY);
-        if (storedTheme !== null) {
-            setIsChecked(storedTheme === 'false');
-            dispatch(toggleTheme());
-        }
-    }, [dispatch])
-
-  
     const handleCheckboxChange = () => {
         const updatedState = !isChecked;
-        console.log('Updated State:', updatedState);
         setIsChecked(updatedState);
         dispatch(toggleTheme());
-        console.log('Saving theme to localStorage:', updatedState);
-        saveThemeInLocalStorage(updatedState);
     };
 
     return (

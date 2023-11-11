@@ -30,7 +30,6 @@ export const Switcher = styled.div`
 
 margin-left: 160px;
 
-
 label {
    width: 70px;
    height: 35px;

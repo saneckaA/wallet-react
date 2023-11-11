@@ -5,7 +5,6 @@ import MainPanel from './MainPanel';
 import { selectIsTransactionExpense, selectIsTransactionIncome } from '../../features/transactions/transactionsSlice';
 import { useSelector } from 'react-redux';
 
-
 const Home = ({ transactions, calculateTotal, toggleTheme, theme }) => {
 
     const incomeTransactions = useSelector(selectIsTransactionIncome);
@@ -15,8 +14,6 @@ const Home = ({ transactions, calculateTotal, toggleTheme, theme }) => {
     const expenseTotal = calculateTotal(expenseTransactions.map(transaction => ({ ...transaction, price: -1 * transaction.price })));
     const finalAmount = (incomeTotal - expenseTotal);
 
-
-    {
         return (
             <Container>
                 <Item>
@@ -25,7 +22,6 @@ const Home = ({ transactions, calculateTotal, toggleTheme, theme }) => {
                         calculateTotal={calculateTotal}
                         incomeTotal={incomeTotal}
                         expenseTotal={expenseTotal}
-
                     />
                 </Item>
                 <ItemMain>
@@ -37,6 +33,5 @@ const Home = ({ transactions, calculateTotal, toggleTheme, theme }) => {
                 </ItemMain>
             </Container>
         )
-    }
 };
 export default Home;

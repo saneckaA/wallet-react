@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { Container, Title, Form, Input, Header, Select, Buttons, Save, Cancel, StyledLink } from './styled';
 import { useDispatch } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
@@ -16,7 +16,6 @@ const NewTransaction = () => {
     const [selectedCategory, setSelectedCategory] = useState("");
 
     const dispatch = useDispatch();
-    const inputRef = useRef(null);
 
     const onFormSubmit = (event) => {
         event.preventDefault();
@@ -36,8 +35,9 @@ const NewTransaction = () => {
 
         setNewContentName("");
         setNewContentPrice("");
-        inputRef.current.focus();
     };
+
+   
 
     const handleCategoryChange = (event) => {
         setSelectedCategory(event.target.value);
@@ -53,7 +53,7 @@ const NewTransaction = () => {
                         placeholder="podaj nazwę transakcji"
                         type="text"
                         required
-                        ref={inputRef}
+                    
                         value={newContentName}
                         onChange={({ target }) => setNewContentName(target.value)}
                     />
